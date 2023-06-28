@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
 import "./styles.css";
 
 function LoginPage() {
@@ -9,6 +11,7 @@ function LoginPage() {
   const [error, setError] = useState(null);
   const [data, setData] = useState(null);
   const navigate = useNavigate();
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -24,8 +27,6 @@ function LoginPage() {
       if (response.ok) {
         const data = await response.json();
         setToken(data.token);
-
-        
       } else {
         setError('Invalid username or password');
       }
@@ -33,7 +34,6 @@ function LoginPage() {
       setError('Something went wrong. Please try again later.');
       console.log(error);
     }
-
   };
 
   useEffect(() => {
@@ -50,9 +50,6 @@ function LoginPage() {
             const data = await response.json();
             setData(data.seller);
             navigate('/dashboard', { state: { user: data.user } });
-
-
-
           } else {
             setError('Authentication Failed. You are not a seller.');
           }
@@ -63,76 +60,50 @@ function LoginPage() {
 
       fetchData();
     }
-  }, [token]);
-
-
-  useEffect(() => {
-    if (token) {
-      const fetchData = async () => {
-        try {
-          const response = await fetch('https://localhost:44381/api/user/Admins', {
-            headers: {
-              Authorization: `Bearer ${token}`
-            }
-          });
-
-          if (response.ok) {
-            const data = await response.json();
-            setData(data.administrator);
-            navigate('/admindashboard', { state: { user: data.user } });
-
-
-
-          } else {
-            setError('Authentication Failed. You are not an Admin.');
-          }
-        } catch (error) {
-          console.log(error);
-          setError('Something went wrong. Please try again later.');
-        }
-      };
-
-      fetchData();
-    }
-  }, [token]);
-
-  
+  }, [token, navigate]);
 
   return (
-    <div className='app'>
-      <h1>Login</h1>
-      <div className="form">
+    <div className="app">
+    <h1>Login</h1>
+    <div className="form">
       <form onSubmit={handleSubmit}>
         <div className="input-container">
-          <label htmlFor="username">Username:</label>
+          <label htmlFor="username">
+            <FontAwesomeIcon icon={faUser} />
+          </label>
           <input
             type="text"
             id="username"
+            placeholder="Username"
             value={Username}
             onChange={(event) => setUsername(event.target.value)}
+            className="form-control"
           />
         </div>
         <div className="input-container">
-          <label htmlFor="password">Password:</label>
+          <label htmlFor="password">
+            <FontAwesomeIcon icon={faLock} />
+          </label>
           <input
             type="password"
             id="password"
+            placeholder="Password"
             value={Password}
             onChange={(event) => setPassword(event.target.value)}
+            className="form-control"
           />
         </div>
-        {error && <div style={{ color: 'red' }}>{error}</div>}
-        <button type="submit">Submit</button>
+        {error && <div className="error-message">{error}</div>}
+        <button type="submit" className="btn btn-primary">Login</button>
+        <p>
+          Don't have an account?
+          <Link to="/register">Sign up instead</Link>
+        </p>
       </form>
-      </div>
-      {/*{token && <p>Token: {token}</p>}
-       {data && (
-        <div>
-          <h2>Data</h2>
-          <p>{data}</p>
-        </div>
-      )} */}
     </div>
+  </div>
+  
+  
   );
 }
 
