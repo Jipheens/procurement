@@ -1,9 +1,11 @@
 import React from 'react';
-import "../components/navbar.css"
-const Navbar = () => {
+
+const CustomNavbar = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a className="navbar-brand" href="#">KINGDOM BANK</a>
+    <nav className="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: '#1a5417' }}>
+      <a className="navbar-brand" href="#" style={{ color: '#ffffff' }}>
+        KINGDOM BANK
+      </a>
       <button
         className="navbar-toggler"
         type="button"
@@ -18,22 +20,34 @@ const Navbar = () => {
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
           <li className="nav-item">
-            <a className="nav-link" href="#">Home</a>
+            <a className="nav-link" href="#" style={{ color: '#ffffff' }}>
+              Home
+            </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Profile</a>
+            <a className="nav-link" href="#" style={{ color: '#ffffff' }}>
+              Profile
+            </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Orders</a>
+            <a className="nav-link" href="#" style={{ color: '#ffffff' }}>
+              Orders
+            </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Invoice</a>
+            <a className="nav-link" href="#" style={{ color: '#ffffff' }}>
+              Invoice
+            </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Sourcing</a>
+            <a className="nav-link" href="#" style={{ color: '#ffffff' }}>
+              Sourcing
+            </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Setup</a>
+            <a className="nav-link" href="#" style={{ color: '#ffffff' }}>
+              Setup
+            </a>
           </li>
         </ul>
       </div>
@@ -41,4 +55,4 @@ const Navbar = () => {
   );
 }
 
-export default Navbar;
+export default CustomNavbar;

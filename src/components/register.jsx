@@ -72,7 +72,7 @@ function RegisterPage() {
               <FontAwesomeIcon icon={faEnvelope} />
             </label>
             <input
-              type="email"
+              type="text"
               id="email"
               placeholder="Email"
               value={Email}

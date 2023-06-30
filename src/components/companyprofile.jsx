@@ -5,7 +5,7 @@ import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
 const CompanyProfile = () => {
   return (
-    <Box sx={{ marginLeft: '22%' }}>
+    <Box sx={{ marginLeft: '22%', marginTop: '1%' }}>
       <Typography variant="h4" gutterBottom>
         Company Profile
       </Typography>

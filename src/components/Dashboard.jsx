@@ -1,28 +1,37 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useLocation, Link } from 'react-router-dom';
-import axios from 'axios';
-import Navbar from "../components/Navbar";
-import Sidebar from "../components/Sidebar";
-import '../components/Dashboard.css'; // Import the CSS file for Dashboard
+import Navbar from '../components/Navbar';
+import Sidebar from '../components/Sidebar';
 import CompanyProfile from '../components/companyprofile';
 import Enviromentalsgd from '../components/EnvSocialGovDiv';
-import Questionnaire from "../components/Risk.jsx";
+import Questionnaire from '../components/RiskAndCompliance';
+import FinancialPerformance from '../components/FinancialPerformance';
+import RatingAndReferences from '../components/RatingAndReferences';
 
+const Dashboard = () => {
+  const [activeTab, setActiveTab] = useState(0);
 
-export default function Dashboard() {
- 
+  const handleTabChange = (newValue) => {
+    setActiveTab(newValue);
+  };
+
   return (
     <div>
       <Navbar />
       <div className="dashboard-container">
-          {/* <Sidebar/>
-         <CompanyProfile/>   
-                 <Enviromentalsgd/>*/} 
-                 <Questionnaire/>
-
-        
+        <div className="sidebar">
+          <Sidebar activeTab={activeTab} handleTabChange={handleTabChange} />
+        </div>
+        <div className="content">
+          {activeTab === 0 && <CompanyProfile />}
+          {activeTab === 1 && <Enviromentalsgd />}
+          {activeTab === 2 && <Questionnaire />}
+          {activeTab === 3 && <FinancialPerformance />}
+          {activeTab === 4 && <RatingAndReferences />}
+        </div>
       </div>
     </div>
   );
-}
+};
+
+export default Dashboard;
