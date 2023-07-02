@@ -27,8 +27,7 @@ const TabComponent = ({ activeTab, handleTabChange }) => {
             fontSize: '16px',
             fontWeight: 'bold',
             '&.Mui-selected': {
-              backgroundColor: '#1a5417',
-              color: '#fff',
+              color: '#000',
             },
           }}
         />
@@ -47,8 +46,7 @@ const TabComponent = ({ activeTab, handleTabChange }) => {
             fontSize: '16px',
             fontWeight: 'bold',
             '&.Mui-selected': {
-              backgroundColor: '#1a5417',
-              color: '#fff',
+              color: '#000',
             },
           }}
         />
@@ -59,8 +57,7 @@ const TabComponent = ({ activeTab, handleTabChange }) => {
             fontSize: '16px',
             fontWeight: 'bold',
             '&.Mui-selected': {
-              backgroundColor: '#1a5417',
-              color: '#fff',
+              color: '#000',
             },
           }}
         />
@@ -71,8 +68,7 @@ const TabComponent = ({ activeTab, handleTabChange }) => {
             fontSize: '16px',
             fontWeight: 'bold',
             '&.Mui-selected': {
-              backgroundColor: '#1a5417',
-              color: '#fff',
+              color: '#000',
             },
           }}
         />
@@ -83,8 +79,7 @@ const TabComponent = ({ activeTab, handleTabChange }) => {
             fontSize: '16px',
             fontWeight: 'bold',
             '&.Mui-selected': {
-              backgroundColor: '#1a5417',
-              color: '#fff',
+              color: '#000',
             },
           }}
         />

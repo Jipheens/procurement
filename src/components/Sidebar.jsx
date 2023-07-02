@@ -13,17 +13,13 @@ const Sidebar = ({ profile, activeTab, handleTabChange }) => {
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
-  };
-
-  const handleUpload = () => {
-    if (selectedFile) {
-      console.log('Uploading file:', selectedFile);
-      // Perform upload logic here
-    }
+    // Perform upload logic here if needed
   };
 
   const handleProfilePictureChange = (event) => {
-    handleFileChange(event);
+    // Open file dialog on click
+    event.preventDefault();
+    document.getElementById("profile-picture").click();
   };
 
   return (
@@ -33,32 +29,32 @@ const Sidebar = ({ profile, activeTab, handleTabChange }) => {
         <h1>You are a, {user.role}!</h1>
         <p>Email: {user.emailAddress}</p>
         <div className="profile-picture">
-          {selectedFile ? (
-            <img
-              src={URL.createObjectURL(selectedFile)}
-              alt="Profile Picture"
-              id="image-preview"
-            />
-          ) : (
-            <img
-              src={picha}
-              alt="Profile Placeholder"
-              className="custom-placeholder-image" 
-            />
-          )}
-          <label htmlFor="profile-picture" className="choose-file-button">
-            Choose File
-            <input
-              type="file"
-              id="profile-picture"
-              accept="image/*"
-              onChange={handleProfilePictureChange}
-            />
-          </label>
+          <Link to="#" onClick={handleProfilePictureChange}>
+            {selectedFile ? (
+              <img
+                src={URL.createObjectURL(selectedFile)}
+                alt="Profile Picture"
+                id="image-preview"
+              />
+            ) : (
+              <img
+                src={picha}
+                alt="Profile Placeholder"
+                className="placeholderimage"
+              />
+            )}
+          </Link>
+          <input
+            type="file"
+            id="profile-picture"
+            accept="image/*"
+            onChange={handleFileChange}
+            style={{ display: 'none' }}
+          />
         </div>
       </div>
 
-      <button>Edit Profile</button>
+      <button className="edit-profile-button">Edit Profile</button>
       <TabComponent activeTab={activeTab} handleTabChange={handleTabChange} />
       <hr></hr>
       <hr></hr>

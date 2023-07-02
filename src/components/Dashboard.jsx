@@ -7,6 +7,7 @@ import Enviromentalsgd from '../components/EnvSocialGovDiv';
 import Questionnaire from '../components/RiskAndCompliance';
 import FinancialPerformance from '../components/FinancialPerformance';
 import RatingAndReferences from '../components/RatingAndReferences';
+import { CompanyProfileProvider } from '../components/CompanyProfileContext';
 
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -23,7 +24,7 @@ const Dashboard = () => {
           <Sidebar activeTab={activeTab} handleTabChange={handleTabChange} />
         </div>
         <div className="content">
-          {activeTab === 0 && <CompanyProfile />}
+          {activeTab === 0 && <CompanyProfileProvider><CompanyProfile /></CompanyProfileProvider>}
           {activeTab === 1 && <Enviromentalsgd />}
           {activeTab === 2 && <Questionnaire />}
           {activeTab === 3 && <FinancialPerformance />}
