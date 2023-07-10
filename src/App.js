@@ -20,8 +20,8 @@ function App() {
     <Route path="/dashboard" element={<Dashboard />} />
     <Route path="/register" element={<RegisterPage  />} />*/}
     
+     <Route path="/application-form/" element={<ApplicationForm />} />
      <Route path='/' element={<Fetchdata />} />
-     {/*<Route path='/' element={<ApplicationForm />} />*/}
 
 
        </Routes>

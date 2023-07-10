@@ -1,15 +1,40 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link,useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import axios from 'axios';
 import { Card, CardContent, Typography } from '@mui/material';
 import { Assignment, CheckCircle, People,Search } from '@mui/icons-material';
 import '../components/ListOfRfq.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ApplicationForm from '../components/ApplicationForm';
+
+
 
 function Fetchdata() {
   const [data, setData] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedItem, setExpandedItem] = useState(null);
+  const location = useLocation();
+
+  const navigate = useNavigate();
+
+  const handleAction = (item) => {
+    const { rfqNumber, rfqTitle, rfqItems } = item;
+
+    navigate(`/application-form/`, {
+      state: {
+        rfqNumber,
+        rfqTitle,
+        rfqItems,
+      },
+    });
+  };
+
+  const extractDate = (datetime) => {
+    const date = new Date(datetime);
+    return date.toDateString();
+  };
+
  
   const rfq = [
     {
@@ -182,50 +207,63 @@ function Fetchdata() {
       <hr />
       <h2 className="centered-text">List of RFQS</h2>
       <hr />
-      <table className="table table-striped table-bordered table-hover">
-      <thead className="thead-dark">
-        <tr>
-          <th>RFQ Number</th>
-          <th>RFQ Title</th>
-          <th>RFQ Description</th>
-          <th>Start Date</th>
-          <th>End Date</th>
-          <th>Created By</th>
-          <th>Created On</th>
-          <th>Number of Suppliers</th>
-          <th>Item Name</th>
-          <th>Item Description</th>
-          <th>Quantity</th>
-                  </tr>
-      </thead>
-      <tbody>
-        {rfq.map((item) => (
-          <React.Fragment key={item.id}>
-            {item.rfqItems.map((rfqItem, index) => (
-              <tr key={`${item.id}-${index}`}>
-                {index === 0 && (
-                  <>
-                    <td rowSpan={item.rfqItems.length}>{item.rfqNumber}</td>
-                    <td rowSpan={item.rfqItems.length}>{item.rfqTitle}</td>
-                    <td rowSpan={item.rfqItems.length}>{item.rfqDescription}</td>
-                    <td rowSpan={item.rfqItems.length}>{item.startDate}</td>
-                    <td rowSpan={item.rfqItems.length}>{item.endDate}</td>
-                    <td rowSpan={item.rfqItems.length}>{item.createdBy}</td>
-                    <td rowSpan={item.rfqItems.length}>{item.createdOn}</td>
-                    <td rowSpan={item.rfqItems.length}>{item.numberOfSuppliers}</td>
-                  </>
-                )}
-                <td>{rfqItem.itemName}</td>
-                <td>{rfqItem.itemDescription}</td>
-                <td>{rfqItem.quantity}</td>
-                
-                 </tr>
-            ))}
-          </React.Fragment>
+
+
+     
+        <Routes>
+          <Route path="/application-form/:rfqNumber" element={<ApplicationForm />} />
+          <Route path="/" element={<table className="table table-striped table-bordered table-hover">
+          <thead className="thead-dark">
+    <tr>
+      <th>RFQ Number</th>
+      <th>RFQ Title</th>
+      <th>RFQ Description</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Created By</th>
+      <th>Created On</th>
+      <th>Number of Suppliers</th>
+      <th>Action</th> {/* New column for Action */}
+      <th>Item Name</th>
+      <th>Item Description</th>
+      <th>Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    {rfq.map((item) => (
+      <React.Fragment key={item.id}>
+        {item.rfqItems.map((rfqItem, index) => (
+          <tr key={`${item.id}-${index}`}>
+            {index === 0 && (
+              <>
+<td rowSpan={item.rfqItems.length}>{item.rfqNumber}</td>
+                <td rowSpan={item.rfqItems.length}>{item.rfqTitle}</td>
+                <td rowSpan={item.rfqItems.length}>{item.rfqDescription}</td>
+                <td rowSpan={item.rfqItems.length}>{extractDate(item.startDate)}</td>
+                <td rowSpan={item.rfqItems.length}>{extractDate(item.endDate)}</td>
+                <td rowSpan={item.rfqItems.length}>{item.createdBy}</td>
+                <td rowSpan={item.rfqItems.length}>{extractDate(item.createdOn)}</td>
+                <td rowSpan={item.rfqItems.length}>{item.numberOfSuppliers}</td>
+              </>
+            )}
+            {index === 0 && (
+              <td rowSpan={item.rfqItems.length}>
+                    <button className="btn btn-primary" style={{alignSelf:"center"}} onClick={() => handleAction(item)}>Apply</button>
+                  </td>
+            )}
+            <td>{rfqItem.itemName}</td>
+            <td>{rfqItem.itemDescription}</td>
+            <td>{rfqItem.quantity}</td>
+          </tr>
         ))}
-        
-      </tbody>
-    </table>
+      </React.Fragment>
+    ))}
+  </tbody>
+          </table>} />
+        </Routes>
+      
+
+
                
     </div>
   );

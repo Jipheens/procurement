@@ -11,10 +11,14 @@ import pesa from "../images/pesa.png"
 import technical from "../images/technicalfav.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+import { useLocation } from 'react-router-dom';
 
 
 const ApplicationForm = () => {
-  
+  const location = useLocation();
+  const { rfqNumber, rfqTitle, rfqItems } = location.state;
+
+  console.log(rfqItems);
   const [activeTab, setActiveTab] = useState('financial');
 
   const handleTabChange = (tab) => {
