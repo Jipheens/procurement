@@ -10,19 +10,19 @@ import "../components/EnvSocialGovDiv.css"
 const Enviromentalsgd = () => {
   return (
     
-<div className='page'>
-<div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-    <div style={{ textAlign: 'center' }}>
-      <Typography variant="h4" component="h2" style={{ fontWeight: 'bold' }}>
-        Environmental, Social, Governance & Diversity
-      </Typography>
-      <Typography variant="subtitle1" color="textSecondary">
-        Share your Environmental, Social, Governance and Diversity details and goals with your customers
-      </Typography>
-    </div>
-    <div>
-      <button className="edit-section-button">EDIT SECTION</button>
-    </div>
+<div className='page' style={{ marginTop: '60px' }}> {/* Add margin top */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+        <div style={{ textAlign: 'center' }}>
+          <Typography variant="h4" component="h2" style={{ fontWeight: 'bold' }}>
+            Environmental, Social, Governance & Diversity
+          </Typography>
+          <Typography variant="subtitle1" color="textSecondary">
+            Share your Environmental, Social, Governance and Diversity details and goals with your customers
+          </Typography>
+        </div>
+        <div>
+          <button className="edit-section-button">EDIT SECTION</button>
+        </div>
   </div>
 
   <Accordion className='custom-jumbotron'>

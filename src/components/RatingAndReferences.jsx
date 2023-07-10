@@ -10,9 +10,9 @@ import "../components/RatingAndReferences.css"
 const RatingAndReferences = () => {
   return (
     
-<div className='page'>
-<div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-    <div style={{ textAlign: 'center' }}>
+<div className='page' style={{ marginTop: '60px' }}> {/* Add margin top */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+        <div style={{ textAlign: 'center' }}>
       <Typography variant="h4" component="h2" style={{ fontWeight: 'bold' }}>
         Ratings & References
       </Typography>

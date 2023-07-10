@@ -6,23 +6,26 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import RegisterPage from './components/register';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
-
-
-
+import Fetchdata from './components/ListOfRfq'; 
+import ApplicationForm from './components/ApplicationForm';
 // import Admindashboard from './Admindashboard';
 function App() {
 
   return (
   
 <div className='App'>
-    <Router>
+     <Router>
     <Routes>
-     <Route path="/" element={<LoginPage />} />  
+    {/* <Route path="/" element={<LoginPage />} />  
     <Route path="/dashboard" element={<Dashboard />} />
-    <Route path="/register" element={<RegisterPage  />} />
+    <Route path="/register" element={<RegisterPage  />} />*/}
+    
+     <Route path='/' element={<Fetchdata />} />
+     {/*<Route path='/' element={<ApplicationForm />} />*/}
 
-    </Routes>
-    </Router>
+
+       </Routes>
+    </Router>  
     </div>
 
 

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
@@ -10,6 +11,10 @@ const CustomNavbar = () => {
   const handleLogout = () => {
     // Perform logout actions here
     navigate('/');
+  };
+
+  const handleSourcingClick = () => {
+    navigate('../source/ListofRfq');
   };
 
   const handleLogoutConfirmation = () => {
@@ -27,7 +32,7 @@ const CustomNavbar = () => {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: '#1a5417' }}>
+      <nav className="navbar navbar-expand-lg navbar-dark fixed-top" style={{ backgroundColor: '#1a5417' }}>
         <a className="navbar-brand" href="#" style={{ color: '#ffffff' }}>
           KINGDOM BANK
         </a>
@@ -65,10 +70,12 @@ const CustomNavbar = () => {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#" style={{ color: '#ffffff' }}>
+            <a className="nav-link" href="#" style={{ color: '#ffffff' }}>
+              <span className="sourcing-link" onClick={handleSourcingClick}>
                 Sourcing
-              </a>
-            </li>
+              </span>
+            </a>
+          </li>
             <li className="nav-item">
               <a className="nav-link" href="#" style={{ color: '#ffffff' }}>
                 Setup

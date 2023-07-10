@@ -10,17 +10,17 @@ import "../components/RiskAndCompliance.css";
 const Questionnaire = () => {
   return (
     
-    <div className='page'>
-    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-        <div style={{ textAlign: 'center' }}>
+    <div className='page' style={{ marginTop: '60px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+        <div style={{ textAlign: 'left' }}>
           <Typography variant="h4" component="h2" style={{ fontWeight: 'bold' }}>
             Risk & Compliance
           </Typography>
-          <Typography variant="subtitle1" color="textSecondary">
-            Share your Environmental, Social, Governance and Diversity details and goals with your customers
+          <Typography variant="subtitle1" color="textSecondary" style={{ textAlign: 'left' }}>
+            Help build trust with customers by sharing your policies regarding information security, data privacy and re 
           </Typography>
         </div>
-        <div>
+        <div style={{ marginLeft: 'auto' }}>
           <button className="edit-section-button">EDIT SECTION</button>
         </div>
       </div>

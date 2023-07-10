@@ -28,7 +28,7 @@ const CompanyProfile = () => {
   };
 
   return (
-    <Box sx={{ marginLeft: '22%', marginTop: '1%' }}>
+    <Box sx={{ marginLeft: '22%', marginTop: '7rem' }}>
       <Box
         sx={{
           borderBottom: '1px solid #ccc',

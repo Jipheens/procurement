@@ -8,7 +8,7 @@ import picha from "../images/profilePlaceholder.jpg"
 const Sidebar = ({ profile, activeTab, handleTabChange }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const location = useLocation();
-  const { user } = location.state;
+  const { username,roles,email } = location.state.user;
   const [data, setData] = useState([]);
 
   const handleFileChange = (event) => {
@@ -25,9 +25,10 @@ const Sidebar = ({ profile, activeTab, handleTabChange }) => {
   return (
     <div className="sidebar">
       <div className="user-info">
-        <h1>Welcome, {user.username}!</h1>
-        <h1>You are a, {user.role}!</h1>
-        <p>Email: {user.emailAddress}</p>
+        <h1>Welcome, {username}!</h1>
+        <p>Username: {username}</p>
+        <p>Roles: {roles.join(', ')}</p>
+        <p>Email: {email}</p>
         <div className="profile-picture">
           <Link to="#" onClick={handleProfilePictureChange}>
             {selectedFile ? (
@@ -57,13 +58,13 @@ const Sidebar = ({ profile, activeTab, handleTabChange }) => {
       <button className="edit-profile-button">Edit Profile</button>
       <TabComponent activeTab={activeTab} handleTabChange={handleTabChange} />
       <hr></hr>
-      <hr></hr>
+      {/* <hr></hr>
       <TabComponent activeTab={activeTab} handleTabChange={handleTabChange} />
       <hr></hr>
       <hr></hr>
       <TabComponent activeTab={activeTab} handleTabChange={handleTabChange} />
       <hr></hr>
-      <hr></hr>
+      <hr></hr> */}
     </div>
   );
 };
